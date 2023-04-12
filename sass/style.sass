@@ -1,0 +1,650 @@
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap')
+
+// ========================= Variables ===============================
+$yellow: #E7AB38
+$black: #050706
+$gray: #DBDBDB
+$white: #FFFFFF
+
+// =============================== Mixins ======================================
+
+@mixin font($fw: 400, $fz: 16px, $lh: 100%)
+   font-weight: $fw
+   font-size: $fz
+   line-height: $lh
+
+// ================================ Base styles ===================================== 
+*
+   font-family: 'Montserrat', sans-serif
+   // font-family: 'Prata', serif
+   // font-family: 'Raleway', sans-serif
+   padding: 0
+   margin: 0
+   box-sizing: border-box
+   text-decoration: none
+   list-style-type: none
+
+body
+   background-color: $black
+   color: #fff
+
+button
+   background-color: transparent
+   border: none
+   outline: none
+   cursor: pointer
+
+.container
+   width: 100%
+   max-width: 1300px
+   margin: 0 auto
+
+// Header 
+
+.header
+   // height: 100vh
+   background: url(../images/header-bg.png)
+   background-size: cover
+   background-repeat: no-repeat
+   background-position: center center
+   &__title
+      margin-top: 60px
+      @include font($fw: 400, $fz: 64px, $lh: 120%)
+      font-family: 'Prata', serif
+      text-align: center
+
+   &__button
+      margin: 40px auto 0
+      @include font($fw: 500, $fz: 20px, $lh: 140%)
+      color: $black
+      padding: 10px 68px
+      background-color: $yellow
+      border-radius: 10px
+      display: block
+
+.navbar
+   padding: 10px 0
+   &__row
+      display: flex
+      align-items: center
+      justify-content: space-between
+
+   &__logo
+      width: 208px
+      height: 68px
+      img
+         width: 100%
+         height: 100%
+         object-fit: cover
+   &__mobile-logo
+      display: none
+   &__email
+      @include font($fw: 300, $fz: 16px, $lh: 170%)
+      color: $white
+
+   &-lang
+      width: 206px
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      gap: 20px
+      &__button
+         @include font($fw: 300, $fz: 16px, $lh: 170%)
+         color: $gray
+         padding: 0 19px
+         border: 1px solid $gray
+         border-radius: 20px
+         &.active
+            background-color: $yellow
+            color: $black
+            border-color: $yellow
+
+.navbar-burger
+   position: relative
+   width: 18px
+   height: 12px
+   cursor: pointer
+   display: none
+   span
+      width: 100%
+      height: 2px
+      background-color: $white
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%)
+      transition: rotate .3s ease
+      &:first-child
+         top: 0
+      &:last-child
+         top: 100%
+   &.active
+      span
+         &:first-child
+            transform: rotate(-45deg)
+            top: 50%
+            left: 0
+         &:nth-child(2)
+            display: none
+         &:last-child
+            transform: rotate(45deg)
+            top: 50%
+            left: 0
+
+.menu
+   position: relative
+   width: 100%
+   border-top: 1px solid $gray
+   border-bottom: 1px solid $gray
+.header-menu
+   display: flex
+   align-items: center
+   justify-content: center
+   gap: 160px
+   padding: 22px 0
+   &__item
+
+   &__link
+      @include font($fw: 500, $fz: 20px, $lh: 140%)
+      color: $white
+   .navbar__email
+      display: none
+   .navbar-lang
+      display: none
+
+.header-main
+
+.header-cards
+   margin-top: 116px
+   position: relative
+   height: 250px
+   .container
+      position: relative
+      height: 100%
+   &__img
+      position: absolute
+      width: 100%
+      // bottom: -300px
+      top: 103px
+      left: 0
+
+.header-card
+   background: rgba(63, 63, 63, 0.3)
+   // background: linear-gradient( #BDA976 100 %, #EDECBB 63 %, #C1953E 10 %)
+   // background: linear-gradient( #BDA976 100%, #EDECBB 63%, #C1953E 10%) rgba(63, 63, 63, 0.3)
+   backdrop-filter: blur(10px)
+   border-radius: 20px
+   width: 279px
+   height: 158px
+   position: absolute
+   padding: 40px 20px
+   text-align: center
+   border: 3px solid #BDA976
+   display: flex
+   flex-direction: column
+   align-items: center
+   justify-content: center
+   &:first-child
+      left: 0
+      bottom: 0
+   &:nth-child(2)
+      top: 0
+      left: 50%
+      transform: translateX(-50%)
+   &:last-child
+      bottom: 0
+      right: 0
+
+   &__img
+      width: 40px
+      height: 40px
+      margin: 0 auto
+      img
+         width: 100%
+         height: 100%
+
+   &__title
+      margin-top: 10px
+      @include font($fw: 500, $fz: 20px, $lh: 140%)
+
+// Modal
+.partner
+   width: 100%
+   height: 100vh
+   background: rgba(39, 39, 39, 0.5)
+   backdrop-filter: blur(25px)
+   position: absolute
+   top: 0
+   left: 0
+   padding: 100px 250px
+   display: none
+   &.active
+      display: block
+   &__close-btn
+      position: absolute
+      top: 15px
+      right: 15px
+      width: 32px
+      height: 32px
+      img
+         width: 100%
+         height: 100%
+
+.partner-body
+   width: 100%
+   height: 100%
+   background-image: url(../images/modal-bg.png)
+   background-position: center
+   background-size: cover
+   background-repeat: no-repeat
+   border-radius: 25px
+   overflow: hidden
+   position: relative
+
+.partner-main
+   height: 100%
+   width: 50%
+   background: rgba(0, 0, 0, 0.5)
+   backdrop-filter: blur(25px)
+   &.completed
+      .partner-content
+         left: -100%
+         opacity: 0
+      .partner-complete
+         right: 0
+         opacity: 1
+
+   &__title
+      @include font($fw: 400, $fz: 40px, $lh: 140%)
+      font-feature-settings: 'pnum' on, 'lnum' on
+      font-family: 'Prata', serif
+      text-align: center
+
+   .partner-content
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-direction: column
+      position: relative
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      transition: .5s ease-in
+
+   .partner-complete
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-direction: column
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      right: -100%
+      opacity: 0
+      transition: .5s ease-in
+      &__button
+         margin-top: 16px
+         padding: 17px 88px
+         background-color: $yellow
+         border-radius: 10px
+         @include font($fw: 500, $fz: 20px, $lh: 140%)
+
+.partner-form
+   margin-top: 40px
+   width: 300px
+   display: flex
+   align-items: center
+   justify-content: center
+   flex-direction: column
+
+   &__input
+      width: 100%
+      display: flex
+      align-items: center
+      justify-content: start
+      gap: 20px
+      border: 1px solid $white
+      border-radius: 10px
+      padding: 10px 24px
+      margin-bottom: 16px
+      input
+         flex: 1
+         @include font($fw: 300, $fz: 16px, $lh: 180%)
+         color: $gray
+         background-color: transparent
+         border: none
+         outline: none
+
+   &__button
+      padding: 17px 93px
+      background-color: $yellow
+      border-radius: 10px
+      @include font($fw: 500, $fz: 20px, $lh: 140%)
+
+// Company
+.company
+   margin-top: 160px
+   &__img
+      flex: 0 0 640px
+      border-radius: 20px
+      overflow: hidden
+      img
+         width: 100%
+         height: 100%
+         object-fit: cover
+
+   &__desc
+   &__title
+      @include font($fw: 400, $fz: 40px, $lh: 140%)
+      text-align: center
+      font-feature-settings: 'pnum' on, 'lnum' on
+      font-family: 'Prata', serif
+
+   &__text
+      margin-top: 20px
+      @include font($fw: 500, $fz: 20px, $lh: 140%)
+
+   &-main
+
+      &__row
+         display: flex
+         align-items: center
+         justify-content: center
+         gap: 20px
+
+.company-info
+   margin-top: 120px
+   padding: 40px 0
+   border-top: 1px solid $gray
+   border-bottom: 1px solid $gray
+   &__row
+      display: flex
+      align-items: center
+      justify-content: space-between
+      flex-wrap: wrap
+      gap: 60px
+      // display: grid
+      // grid-template-columns: repeat(4, minmax(114px, 258px))
+      // justify-content: space-between
+
+   &__item
+      display: flex
+      flex-direction: column
+      justify-content: center
+   &__name
+      @include font($fw: 500, $fz: 20px, $lh: 140%)
+
+   &__value
+      @include font($fw: 700, $fz: 100px, $lh: 140%)
+      leading-trim: both
+      text-egde: cap
+      font-feature-settings: 'pnum' on, 'lnum' on
+      background: linear-gradient(111.24deg, #BDA976 -6.16%, #EDECBB 31.86%, #C1953E 80.24%)
+      -webkit-background-clip: text
+      color: $black
+      -webkit-text-stroke: 5px transparent
+      font-family: 'Raleway', sans-serif
+      // -webkit-background-clip: text
+      // -webkit-text-stroke: 4px transparent
+
+// Branches
+
+.branches
+   margin-top: 160px
+   text-align: center
+   &__title
+      @include font($fw: 400, $fz: 40px, $lh: 140%)
+      font-feature-settings: 'pnum' on, 'lnum' on
+      font-family: 'Prata', serif
+   &__desc
+      margin-top: 40px
+      @include font($fw: 300, $fz: 16px, $lh: 180%)
+
+.branches-search
+   margin: 40px auto 0
+   max-width: 300px
+   height: 49px
+   padding: 15.5px 23.5px
+   border: 1px solid $white
+   border-radius: 10px
+   display: flex
+   align-items: center
+   gap: 10px
+   &__input
+      flex: 1
+      background-color: $black
+      color: $white
+      border: none
+      outline: none
+      @include font($fw: 400, $fz: 16px, $lh: 140%)
+
+.branches-map
+   margin-top: 40px
+   svg
+      width: 100%
+      path
+         fill: $black
+         stroke: $yellow
+         &:hover
+            stroke: $yellow
+            fill: $yellow
+.branches-bottom
+   margin-top: 100px
+   text-align: center
+   &__text
+      @include font($fw: 500, $fz: 20px, $lh: 140%)
+      max-width: 920px
+      margin: 0 auto
+   &__button
+      margin-top: 40px
+      padding: 10px 57px
+      background-color: $yellow
+      color: $black
+      border-radius: 10px
+      @include font($fw: 500, $fz: 20px, $lh: 140%)
+
+.footer
+   padding: 40px 0 60px
+   margin-top: 160px
+   background-image: url(../images/footer-bg.png)
+   background-size: cover
+   background-position: center
+   background-repeat: no-repeat
+   &__logo
+      width: 91px
+      height: 86px
+      margin: 0 auto
+      img
+         width: 100%
+         height: 100%
+         object-fit: contain
+   &__email
+      text-align: center
+      margin-top: 20px
+      a
+         color: $white
+         @include font($fw: 300, $fz: 16px, $lh: 180%)
+
+.footer-menu
+   margin-top: 20px
+   display: flex
+   align-items: center
+   justify-content: center
+   gap: 60px
+   &__item
+      a
+         @include font($fw: 500, $fz: 20px, $lh: 140%)
+         color: $white
+
+.footer-socials
+   margin-top: 20px
+   display: flex
+   align-items: center
+   justify-content: center
+   gap: 28px
+   &__item
+      width: 24px
+      height: 24px
+      img
+         width: 100%
+         height: 100%
+
+.footer-copy
+   margin-top: 65px
+   @include font($fw: 300, $fz: 16px, $lh: 180%)
+   text-align: center
+
+@media (max-width: 1440px)
+   .container
+      max-width: 90%
+
+@media (max-width: 1224px)
+   .company
+      &__img
+         flex: 1 0 430px
+
+@media (max-width: 1025px)
+   .header-cards
+      // height: 350px
+   .header-card
+      width: 220px
+      height: 130px
+      padding: 15px
+   .company-info
+      &__row
+         justify-content: center
+   .header-menu
+      gap: 80px
+
+@media (max-width: 768px)
+   .navbar-lang
+      display: none
+   .navbar__email
+      display: none
+   .navbar__logo
+      display: none
+   .navbar-burger
+      display: inline-block
+   .navbar__mobile-logo
+      display: inline-block
+
+   .menu
+      border-bottom: none
+   .header-menu
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      position: absolute
+      width: 250px
+      border: 1px solid $gray
+      background: rgba(63, 63, 63, 0.3)
+      backdrop-filter: blur(10px)
+      border-radius: 0px 0px 20px 20px
+      border-top: none
+      gap: 10px
+      padding: 40px 20px
+      transition: .5s ease-in-out
+      top: 0
+      right: -100%
+      &.active
+         // border-top: none
+         opacity: 1
+         top: 0
+         right: 24px
+
+      .navbar-lang
+         display: flex
+         justify-content: center
+         margin-bottom: 20px
+      .navbar__email
+         display: inline-block
+
+   .header
+      &__title
+         font-size: 40px
+   .header-main
+      margin-top: 150px
+
+   .header-cards
+      height: 250px
+
+   .header-card
+      width: 192px
+      height: 119px
+      padding: 15px
+      &__img
+         width: 30px
+         height: 30px
+      &__title
+         margin-top: 5px
+         font-size: 18px
+
+   .company
+      margin-top: 130px
+      &__title
+         font-size: 32px
+      &__text
+         font-size: 18px
+         margin-top: 10px
+      &__img
+         width: 100%
+         height: auto
+         flex: 1
+
+   .company-main
+      &__row
+         flex-direction: column-reverse
+         gap: 30px
+
+   .company-info__row
+      // flex-wrap: wrap
+      // gap: 60px
+      // grid-template-columns: repeat(2, 1fr)
+      // grid-template-rows: repeat(2, 1fr)
+   .branches
+      &__title
+         font-size: 32px
+   .branches-map
+      svg
+         height: auto
+   .branches-bottom
+      margin-top: 40px
+      &__text
+         font-size: 18px
+
+   .footer
+      margin-top: 130px
+      padding: 40px 0 30px
+   .footer-menu
+      // flex-wrap: wrap
+      margin-top: 30px
+      flex-direction: column
+      gap: 20px
+
+@media (max-width: 428px)
+   .branches-search
+      width: 100%
+   .header-cards
+      margin-top: 120px
+      height: auto
+      .container
+         display: flex
+         flex-direction: column
+         gap: 20px
+         justify-content: center
+         align-items: center
+   .header-card
+      &:first-child,
+      &:nth-child(2),
+      &:last-child
+         width: 100%
+         position: relative
+         top: 0
+         left: 0
+         transform: translate(0)
+         height: 120px
+         max-width: 220px
